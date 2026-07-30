@@ -3,70 +3,108 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My First Web Page</title>
+  <title>Welcome Page</title>
   <style>
+    * { box-sizing: border-box; }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      color: #222;
       margin: 0;
-      padding: 40px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
     }
 
-    .box {
-      background: white;
-      max-width: 500px;
-      margin: auto;
-      padding: 24px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      color: #111827;
+      width: 100%;
+      max-width: 520px;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+      animation: fadeIn 0.8s ease;
+    }
+
+    h1 {
+      margin-top: 0;
+      color: #1d4ed8;
+      font-size: 28px;
+    }
+
+    p {
+      line-height: 1.6;
+      color: #4b5563;
     }
 
     input, button {
-      padding: 10px;
-      margin-top: 10px;
       width: 100%;
-      box-sizing: border-box;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #cbd5e1;
+      margin-top: 10px;
+      font-size: 16px;
     }
 
     button {
-      background: #007bff;
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
       color: white;
       border: none;
       cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25);
     }
 
     .result {
-      margin-top: 15px;
-      font-weight: bold;
-      color: #0056b3;
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 600;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="box">
-    <h1>My First Web Page</h1>
-    <p>This page shows the same idea as your Python function example.</p>
+  <div class="card">
+    <h1>✨ Welcome to My Fun Page</h1>
+    <p>Enter your name and see the page greet you in a friendly way.</p>
 
     <input id="nameInput" type="text" placeholder="Enter your name" />
     <button onclick="showGreeting()">Say hello</button>
-    <div id="greeting" class="result"></div>
+    <div id="greeting" class="result">Waiting for your name...</div>
 
-    <button onclick="showTea()" style="margin-top: 20px;">Make tea</button>
-    <div id="teaMessage" class="result"></div>
+    <button onclick="showTea()" style="margin-top: 18px;">Make tea</button>
+    <div id="teaMessage" class="result">Tea is not ready yet...</div>
   </div>
 
   <script>
     function greet(name) {
-      return "Hello, " + name;
+      return "Hello, " + name + "! You look amazing today.";
     }
 
     function makeTea() {
-      return "Tea is ready";
+      return "☕ Tea is ready! Enjoy your calm moment.";
     }
 
     function showGreeting() {
-      const name = document.getElementById("nameInput").value || "friend";
+      const name = document.getElementById("nameInput").value.trim() || "friend";
       document.getElementById("greeting").textContent = greet(name);
     }
 
